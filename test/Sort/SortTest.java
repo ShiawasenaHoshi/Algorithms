@@ -41,8 +41,9 @@ public class SortTest {
     }
 
     @Test
-    public void testSort1() throws Exception {
-
+    public void testQuickSort() throws Exception {
+        Collection<Integer> sortedInts = sort(Arrays.asList(integers), new QuickSort<>());
+        checkCollection(sortedInts);
     }
 
     private void checkCollection(Collection<Integer> collection){
