@@ -1,10 +1,10 @@
 package Find;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by vasily on 19.06.15.
  */
-public interface Finder<T> {
-    T find(Collection<T> collection);
+public interface Finder<T extends Comparable<T>> {
+    int indexOf(List<T> list, T toFind);
 }
