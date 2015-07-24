@@ -13,5 +13,4 @@ Each has tests (JUnit 4)
 # CONTACTS #
 
 VK: https://vk.com/pujari
-
 EMAIL: shiawasena.hoshi@gmail.com
