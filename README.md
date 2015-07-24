@@ -1,6 +1,6 @@
 # README #
 
-This is implementations of algorithms:
+This is implementation of algorithms:
 
 * binary search
 * counting sort
@@ -13,4 +13,5 @@ Each has tests (JUnit 4)
 # CONTACTS #
 
 VK: https://vk.com/pujari
+
 EMAIL: shiawasena.hoshi@gmail.com
