@@ -9,3 +9,8 @@ This is implementations of algorithms:
 * Shell sort
 
 Each has tests (JUnit 4)
+
+# CONTACTS #
+
+https://vk.com/pujari
+shiawasena.hoshi@gmail.com
