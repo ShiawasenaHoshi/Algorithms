@@ -2,9 +2,6 @@ package Find;
 
 import java.util.List;
 
-/**
- * Created by vasily on 20.06.15.
- */
 public class BinarySearch<T extends Comparable<T>> implements Finder<T> {
     @Override
     public int indexOf(List<T> list, T toFind) {

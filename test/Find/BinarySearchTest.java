@@ -13,9 +13,6 @@ import java.util.Random;
 
 import static Find.SimpleBinarySearch.binarySearch;
 
-/**
- * Created by vasily on 20.06.15.
- */
 public class BinarySearchTest {
     List<Integer> ints;
     List<Person> persons;
@@ -24,7 +21,7 @@ public class BinarySearchTest {
 
     @Test
     public void testSimpleBinarySearch() throws Exception {
-        ints = new ArrayList<Integer>();
+        ints = new ArrayList<>();
         for (int i = 0; i < 75 + random.nextInt(50); i++) {
             ints.add(i);
         }
@@ -36,7 +33,7 @@ public class BinarySearchTest {
 
     @Test
     public void testSimpleBinarySearch2() throws Exception {
-        ints = new ArrayList<Integer>();
+        ints = new ArrayList<>();
         for (int i = 0; i < 75 + random.nextInt(50); i++) {
             ints.add(i);
         }
@@ -69,13 +66,13 @@ public class BinarySearchTest {
             StringBuilder sb2 = new StringBuilder();
             sb2.append("Искомое: ");
             sb2.append(toFind);
-            if (ints.indexOf(new Integer(toFind)) != binarySearch(ints, toFind)) {
+            if (ints.indexOf(toFind) != binarySearch(ints, toFind)) {
                 sb.append(sb2);
-                int index = ints.indexOf(new Integer(toFind));
+                int index = ints.indexOf(toFind);
                 sb.append("\nИндекс в массиве: ");
                 sb.append(index);
                 System.out.println(sb.toString());
-                Assert.assertEquals(ints.indexOf(new Integer(toFind)), binarySearch(ints, toFind));
+                Assert.assertEquals(ints.indexOf(toFind), binarySearch(ints, toFind));
             }
         }
     }
@@ -117,10 +114,9 @@ public class BinarySearchTest {
         for (int i = 0; i < 75 + random.nextInt(50); i++) {
             for (int j = 0; j < random.nextInt(5); j++) {
                 persons.add(new Person((i + j * 5), "Имя" + i + j));
-
             }
         }
-        persons = (List<Person>)Strategy.sort(persons, new ShellSort<Person>());
+        persons = (List<Person>) Strategy.sort(persons, new ShellSort<>());
         sb.append("Массив: ");
         for (Person person : persons) {
             sb.append(person.toString());
@@ -138,13 +134,13 @@ public class BinarySearchTest {
             StringBuilder sb2 = new StringBuilder();
             sb2.append("Искомое: ");
             sb2.append(toFind.toString());
-            if (persons.indexOf(toFind) != new BinarySearch().indexOf(persons, toFind)) {
+            if (persons.indexOf(toFind) != new BinarySearch<Person>().indexOf(persons, toFind)) {
                 sb.append(sb2);
                 int index = persons.indexOf(toFind);
                 sb.append("\nИндекс в массиве: ");
                 sb.append(index);
                 System.out.println(sb.toString());
-                Assert.assertEquals(persons.indexOf(toFind), new BinarySearch().indexOf(persons, toFind));
+                Assert.assertEquals(persons.indexOf(toFind), new BinarySearch<Person>().indexOf(persons, toFind));
             }
         }
     }

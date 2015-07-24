@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * Created by vasily on 19.06.15.
- */
 public class InsertSort<T extends Comparable<T>> implements Sorter<T> {
     List<T> list;
     int size;

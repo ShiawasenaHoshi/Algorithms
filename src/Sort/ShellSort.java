@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * Created by vasily on 19.06.15.
- */
 //fixMe Не забудь про DRY! Код в сортировщиках повторяется
 public class ShellSort<T extends Comparable<T>> implements Sorter<T> {
+    final private static int[] EMPIRIC_DELTAS = {701, 301, 132, 57, 23, 10, 4};
     List<T> list;
     int size;
-    final private static int[] EMPIRIC_DELTAS = {701, 301, 132, 57, 23, 10, 4};
 
     @Override
     public Collection<T> sort(Collection<T> collection) {
@@ -20,8 +17,8 @@ public class ShellSort<T extends Comparable<T>> implements Sorter<T> {
         }
         copyToArray(collection);
         int currentDelta;
-        for (int currentDeltaIndex = 0; currentDeltaIndex < EMPIRIC_DELTAS.length; currentDeltaIndex++) {
-            currentDelta = EMPIRIC_DELTAS[currentDeltaIndex];
+        for (int EMPIRIC_DELTA : EMPIRIC_DELTAS) {
+            currentDelta = EMPIRIC_DELTA;
             if (currentDelta >= size) {
                 continue;
             }

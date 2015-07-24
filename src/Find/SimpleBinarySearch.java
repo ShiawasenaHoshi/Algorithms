@@ -2,24 +2,8 @@ package Find;
 
 import java.util.List;
 
-/**
- * Created by vasily on 19.06.15.
- */
 public class SimpleBinarySearch {
 
-    //    int function SimpleBinarySearch (Array A, int Lb, int Ub, int Key);
-//    begin
-//    do forever
-//            M = (Lb + Ub)/2;
-//    if (Key < A[M]) then
-//            Ub = M - 1;
-//    else if (Key > A[M]) then
-//            Lb = M + 1;
-//    else
-//            return M;
-//    if (Lb > Ub) then
-//    return -1;
-//    end;
     public static int binarySearch(List<Integer> list, int key) {
         return binarySearch(list, 0, list.size() - 1, key);
     }
