@@ -18,7 +18,17 @@ public class QuickFindAndUnionTests {
     public void testQF() throws Exception {
         QuickFind qf = new QuickFind(elements);
         testConnected(qf);
-        testUnion(qf);
+        qf.union(2, 7);
+        qf.union(6, 7);
+        qf.union(7, 0);
+        qf.union(7, 9);
+        qf.union(3, 0);
+        qf.union(0, 1);
+        StringBuilder sb = new StringBuilder();
+        for (int element : elements) {
+            sb.append(element).append(" ");
+        }
+        Assert.assertEquals(sb.toString(), "1 1 1 1 4 5 1 1 8 1 ");
     }
 
     @Test
@@ -32,7 +42,20 @@ public class QuickFindAndUnionTests {
     public void testQUW() throws Exception {
         QuickUnionW quw = new QuickUnionW(elements);
         testConnected(quw);
-        testUnion(quw);
+        quw.union(2, 5);
+        quw.union(3, 5);
+        quw.union(4, 0);
+        quw.union(9, 6);
+        quw.union(6, 4);
+        quw.union(5, 7);
+        quw.union(8, 3);
+        quw.union(0, 5);
+        quw.union(2, 1);
+        StringBuilder sb = new StringBuilder();
+        for (int element : elements) {
+            sb.append(element).append(" ");
+        }
+        Assert.assertEquals(sb.toString(), "4 2 2 2 9 2 9 2 2 2 ");
     }
 
     @Test

@@ -12,7 +12,7 @@ public class QuickUnionW implements QuickFindUnion {
         //assume that elements doesn't connected
         sz = new int[elements.length];
         for (int i = 0; i < sz.length; i++) {
-            sz[i] = 0;
+            sz[i] = 1;
         }
     }
 
