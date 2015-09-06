@@ -1,24 +1,23 @@
-package Other;
+package Other.QuickUnionAndFind;
 
 /**
- * Quick-union with weighting and path compression
+ * Quick-union with weighting
  */
-public class QuickUnionWCP implements QuickFindUnion {
+public class QuickUnionW implements QuickFindUnion {
     int[] elements;
     int[] sz;
 
-    public QuickUnionWCP(int[] elements) {
+    public QuickUnionW(int[] elements) {
         this.elements = elements;
         //assume that elements doesn't connected
         sz = new int[elements.length];
         for (int i = 0; i < sz.length; i++) {
-            sz[i] = 0;
+            sz[i] = 1;
         }
     }
 
     private int getRoot(int index) {
         while (index != elements[index]) {
-            elements[index] = elements[elements[index]]; //only this line changed
             index = elements[index];
         }
         return index;

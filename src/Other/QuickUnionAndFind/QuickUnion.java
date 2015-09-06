@@ -1,4 +1,4 @@
-package Other;
+package Other.QuickUnionAndFind;
 
 public class QuickUnion implements QuickFindUnion {
     int[] elements;

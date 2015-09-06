@@ -1,4 +1,4 @@
-package Other;
+package Other.QuickUnionAndFind;
 
 public interface QuickFindUnion {
     void union(int p, int q);

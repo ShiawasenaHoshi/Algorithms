@@ -1,4 +1,4 @@
-package Other;
+package Other.QuickUnionAndFind;
 
 /**
  * This is implementation of simple quick-find algorithm
