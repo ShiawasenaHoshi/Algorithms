@@ -1,6 +1,6 @@
 package Other.QuickUnionAndFind.Demonstration;
 
-import edu.princeton.cs.algs4.QuickFindUF;
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 /**
  * Percolation simulation.
@@ -11,60 +11,70 @@ public class Percolation {
     private final int virtualTop;
     private final int virtualBottom;
     private boolean[] openCells;
-    private QuickFindUF quickFindUF; //You can choose another algorithm: WeightedQuickUnionUF, QuickUnionUF, QuickUnionWCP
+    private WeightedQuickUnionUF weightedQuickUnionUF; //You can choose another algorithm: QuickFindUF, QuickUnionUF, QuickUnionWCP
 
     public Percolation(int size) {
+        if (size <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.size = size;
         cellsAmount = size * size;
         openCells = new boolean[cellsAmount];
         for (int i = 0; i < cellsAmount; i++) {
             openCells[i] = false;
         }
-        quickFindUF = new QuickFindUF(cellsAmount + 2);
+        weightedQuickUnionUF = new WeightedQuickUnionUF(cellsAmount + 2);
         virtualTop = cellsAmount;
         virtualBottom = cellsAmount + 1;
     }
 
     public boolean isFull(int col, int row) {
         int cellIndex = calcCellIndex(col, row);
-        return quickFindUF.connected(cellIndex, virtualTop);
+        return weightedQuickUnionUF.connected(cellIndex, virtualTop);
     }
 
     public boolean isOpen(int col, int row) {
         return openCells[calcCellIndex(col, row)];
     }
 
-    public void open(int col, int row) {
-        int cellIndex = calcCellIndex(col, row);
+    public void open(int row, int col) {
+        int cellIndex = calcCellIndex(row, col);
         openCells[cellIndex] = true;
-
         int up = cellIndex - size;
-        if (up < 0) quickFindUF.union(cellIndex, virtualTop);
+        if (up < 0) weightedQuickUnionUF.union(cellIndex, virtualTop);
         else if (openCells[up]) {
-            quickFindUF.union(cellIndex, up);
-            if (row == size && quickFindUF.connected(up, virtualTop)) {
-                quickFindUF.union(cellIndex, virtualBottom);
+            weightedQuickUnionUF.union(cellIndex, up);
+            if (row == size && weightedQuickUnionUF.connected(up, virtualTop)) {
+                weightedQuickUnionUF.union(cellIndex, virtualBottom);
             }
         }
 
         int right = cellIndex + 1;
         if (right % size != 0 && openCells[right]) {
-            quickFindUF.union(cellIndex, right);
-            if (row == size && quickFindUF.connected(right, virtualTop)) {
-                quickFindUF.union(cellIndex, virtualBottom);
+            weightedQuickUnionUF.union(cellIndex, right);
+            if (row == size && weightedQuickUnionUF.connected(right, virtualTop)) {
+                weightedQuickUnionUF.union(cellIndex, virtualBottom);
             }
         }
 
         int down = cellIndex + size;
         if (down >= cellsAmount) {
-            if (quickFindUF.connected(cellIndex, virtualTop)) quickFindUF.union(cellIndex, virtualBottom);
-        } else if (openCells[down]) quickFindUF.union(cellIndex, down);
+            if (weightedQuickUnionUF.connected(cellIndex, virtualTop))
+                weightedQuickUnionUF.union(cellIndex, virtualBottom);
+        } else if (openCells[down]) {
+            weightedQuickUnionUF.union(cellIndex, down);
+        }
 
         int left = cellIndex - 1;
         if (left % size != size - 1 && left >= 0 && openCells[left]) {
-            quickFindUF.union(cellIndex, left);
-            if (row == size && quickFindUF.connected(left, virtualTop)) {
-                quickFindUF.union(cellIndex, virtualBottom);
+            weightedQuickUnionUF.union(cellIndex, left);
+            if (row == size && weightedQuickUnionUF.connected(left, virtualTop)) {
+                weightedQuickUnionUF.union(cellIndex, virtualBottom);
+            }
+        }
+        for (int i = 1; i <= size; i++) {
+            if (weightedQuickUnionUF.connected(cellsAmount - i, virtualTop)) {
+                weightedQuickUnionUF.union(cellsAmount - i, virtualBottom);
             }
         }
     }
@@ -77,7 +87,7 @@ public class Percolation {
     }
 
     public boolean percolates() {
-        return quickFindUF.connected(virtualTop, virtualBottom);
+        return weightedQuickUnionUF.connected(virtualTop, virtualBottom);
     }
 
 }
