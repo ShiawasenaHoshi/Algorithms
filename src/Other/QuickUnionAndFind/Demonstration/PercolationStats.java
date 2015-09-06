@@ -11,6 +11,9 @@ public class PercolationStats {
     private int[] simResults;
 
     public PercolationStats(int N, int T) {
+        if (N <= 0 || T <= 0) {
+            throw new IllegalArgumentException("arguments must be more than 0");
+        }
         cellsAmount = N * N;
         simResults = new int[T];
         for (int i = 0; i < T; i++) {
@@ -34,19 +37,17 @@ public class PercolationStats {
         try {
             int N = Integer.parseInt(args[0]);
             int T = Integer.parseInt(args[1]);
-            if (N <= 0 || T <= 0) {
-                throw new IllegalArgumentException("arguments must be more than 0");
-            }
             PercolationStats percolationStats = new PercolationStats(N, T);
             System.out.println("mean = " + percolationStats.mean());
             System.out.println("StdDev = " + percolationStats.stddev());
-            System.out.println("95% confidence interval = " + percolationStats.confidenceLo() + ", " + percolationStats.confidenceHi());
+            System.out.println("95% confidence interval = " + percolationStats.confidenceLo() + ", "
+                    + percolationStats.confidenceHi());
         } catch (IllegalArgumentException iae) {
             System.err.println(iae.getMessage());
         }
 
 
-    }
+    }    // test client (described below)
 
     public double mean() {
         return StdStats.mean(simResults) / cellsAmount;
