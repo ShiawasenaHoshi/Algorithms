@@ -1,4 +1,4 @@
-package Other.QuickUnionAndFind.DemonstrationQuickUnionW; /**
+package Other.QuickUnionAndFind.Demonstration; /**
  * ***************************************************************************
  * Compilation:  javac InteractivePercolationVisualizer.java
  * Execution:    java InteractivePercolationVisualizer N

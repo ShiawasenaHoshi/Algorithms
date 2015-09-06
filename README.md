@@ -7,10 +7,10 @@ This is implementation of algorithms:
 * insert sort
 * quick sort
 * Shell sort
-* quick find
-* quick union
-* quick union weighted (visual demonstration include)
-* quick union weighted + path compression
+* quick find (visual demonstration & Monte-Carlo simulation include)
+* quick union (visual demonstration & Monte-Carlo simulation include)
+* quick union weighted (visual demonstration & Monte-Carlo simulation include)
+* quick union weighted + path compression (visual demonstration & Monte-Carlo simulation include)
 
 Each has tests (JUnit 4)
 

@@ -1,14 +1,19 @@
-package Other.QuickUnionAndFind.DemonstrationQuickUnionW;
+package Other.QuickUnionAndFind.Demonstration;
 
-import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+import edu.princeton.cs.algs4.QuickFindUF;
+
+/**
+ * Percolation simulation.
+ */
 
 public class Percolation {
     private final int size;
     private final int cellsAmount;
     private final int virtualTop;
     private final int virtualBottom;
-    boolean[] openCells;
-    WeightedQuickUnionUF quickUnion;
+    private boolean[] openCells;
+    //    WeightedQuickUnionUF quickUnion;
+    private QuickFindUF quickUnion; //You can choose another algorithm: WeightedQuickUnionUF, QuickUnionUF, QuickUnionWCP
 
     public Percolation(int size) {
         this.size = size;
@@ -17,7 +22,8 @@ public class Percolation {
         for (int i = 0; i < cellsAmount; i++) {
             openCells[i] = false;
         }
-        quickUnion = new WeightedQuickUnionUF(cellsAmount + 2);
+//        quickUnion = new WeightedQuickUnionUF(cellsAmount + 2);
+        quickUnion = new QuickFindUF(cellsAmount + 2);
         virtualTop = cellsAmount;
         virtualBottom = cellsAmount + 1;
     }
